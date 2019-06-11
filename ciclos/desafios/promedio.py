@@ -13,3 +13,5 @@ while i < number:
 
 
 print(f"el promedio es: {sum/i}")
+
+# Ver online en: https://repl.it/@lporras/promediopy
