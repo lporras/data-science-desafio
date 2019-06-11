@@ -6,7 +6,7 @@ premium_users = int(sys.argv[3])
 free_users = int(sys.argv[4])
 expenses = float(sys.argv[5])
 
-utilities = sell_price * (2 * premium_users - free_users) - expenses
+utilities = sell_price * (2 * premium_users + (total_users - premium_users - free_users)) - expenses
 taxes = 0
 
 if(utilities > 0):
