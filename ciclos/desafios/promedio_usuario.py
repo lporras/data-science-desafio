@@ -13,3 +13,5 @@ while i < number:
 average = reduce((lambda x, y: x + y), numbers) / number
 
 print(f"el promedio de los {number} ingresados es: {average}")
+
+# Ver online en: https://repl.it/@lporras/promediouserpy
