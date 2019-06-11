@@ -8,3 +8,5 @@ velocity = math.sqrt(2 * gravity * radio * 1000)
 velocity = format(velocity, '.2f')
 
 print("La velocidad de escape es {} m/s".format(velocity))
+
+#Ver la version online: https://repl.it/@lporras/escapepy
