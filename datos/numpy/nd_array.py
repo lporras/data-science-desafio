@@ -18,3 +18,16 @@ type(array_string)
 mixto = np.array(["gato", 1, 2.8])
 
 type(mixto)
+
+import pandas as pd
+
+df = pd.read_csv("nations.csv")
+
+type(df.values)
+#Out[4]: numpy.ndarray
+type(df["gdp"].values)
+#Out[5]: numpy.ndarray
+
+datos_aleatorios = np.random.randn(4,4)
+type(datos_aleatorios)
+print(datos_aleatorios)
