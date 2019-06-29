@@ -16,15 +16,11 @@ colores = {
     "orchid": "#da70d6"
 }
 
-found = False
+colores_inv = {v:k for k, v in colores.items()}
 
-for name, hexa in colores.items():
-    if hexa == search:
-        found = True
-        print(name)
-
-if not found:
+if search in colores_inv:
+    print(colores_inv[search])
+else:
     print("no-no")
 
-#(base) ➜  data-science-desafio git:(master) ✗ python api/diccionarios/busqueda_colores.py "#000080"
-#navy
+
