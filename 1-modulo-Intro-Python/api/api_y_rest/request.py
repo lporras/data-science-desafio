@@ -14,6 +14,13 @@ response = requests.request("GET", url, data=payload, headers=headers)
 print(response.text)
 print(response)
 result = json.loads(response.text)
+
+print(type(result))
+print(result[0]["userId"])
+print(result[0]["title"])
+
+for post in result:
+    print(post["title"])
 # In [19]: len(result)
 # Out[19]: 100
 
