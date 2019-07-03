@@ -15,6 +15,7 @@ ventas = {
   "Diciembre": 21000
 }
 
+'''
 quarter_months = {
   "Q1": ["Enero", "Febrero", "Marzo"],
   "Q2": ["Abril", "Mayo", "Junio"],
@@ -29,4 +30,11 @@ for quarter, months in quarter_months.items():
   for month in months:
     total_months += ventas[month]
   quarters[quarter] = total_months
+'''
 
+quarters = {
+  "Q1": sum([ventas["Enero"], ventas["Febrero"], ventas["Marzo"]]),
+  "Q2": sum([ventas["Abril"], ventas["Mayo"], ventas["Junio"]]),
+  "Q3": sum([ventas["Julio"], ventas["Agosto"], ventas["Septiembre"]]),
+  "Q4": sum([ventas["Octubre"], ventas["Noviembre"], ventas["Diciembre"]])
+}

@@ -1,7 +1,7 @@
 import requests
 import json
 
-url = "https://reqres.in/api/users/"
+url = "https://reqres.in/api/users"
 
 def request(method, url, payload=""):
     headers = {
@@ -18,7 +18,7 @@ def request(method, url, payload=""):
     if  response.status_code in [200, 201] and method in ["GET", "POST", "PUT"]:
         return json.loads(response.text)
     elif response.status_code in [200, 204] and method == "DELETE":
-        return response.status_code
+        return response
     else:
         return response.status_code
 
