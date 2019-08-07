@@ -46,6 +46,13 @@ def desafio_4(dataframe, var, sample_mean=False, true_mean=False):
         plt.legend()
     plt.show()
 
+def get_zscore(df, col):
+    get_point = df[col]
+    preproc = df[col].dropna()
+    get_mean = preproc.mean()
+    get_std = preproc.std()
+    return (get_point - get_mean) / get_std
+
 def desafio_5(dataframe, plot_var, plot_by, global_stat=False, statistic=['mean']):
     grouped_serie = dataframe.groupby(plot_by)[plot_var]
     for stat in statistic:
@@ -60,9 +67,18 @@ def desafio_5(dataframe, plot_var, plot_by, global_stat=False, statistic=['mean'
             plt.plot(grouped_medians.values, grouped_medians.index, 'o')
             plt.axvline(var_median, color='lightgreen', linestyle='--', label=f"Median ({round(var_median, 2)}%)")
         elif stat == 'z_score':
-            S=(grouped_serie.mean())
-            grouped_z_scores = pd.Series(ss.zscore(S, ddof=1), S.index)
-            plt.plot(grouped_z_scores.values, grouped_z_scores.index, 'o')
+            # Using scipy.stats zscore method with means of grouped data
+            # S=(grouped_serie.mean())
+            # grouped_z_scores = pd.Series(ss.zscore(S, ddof=1), S.index)
+            # plt.plot(grouped_z_scores.values, grouped_z_scores.index, 'o')
+            zscore_plot_var = f"{plot_var}_z_score"
+            zscore_serie = get_zscore(dataframe, plot_var)
+            zscore_mean = zscore_serie.mean()
+            dataframe[zscore_plot_var] = zscore_serie
+            grouped_serie = dataframe.groupby(plot_by)[zscore_plot_var]
+            grouped_means = grouped_serie.mean()
+            plt.plot(grouped_means.values, grouped_means.index, 'o')
+            plt.axvline(zscore_mean, color='lightblue', linestyle='--', label=f"ZScore Mean ({zscore_mean}%)")
     if global_stat:
         global_var_serie = df[plot_var].dropna()
         global_var_mean = global_var_serie.mean()
